@@ -1,13 +1,24 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/log_in.css">
+</head>
+
 <body>
     <div class="container">
         <h2>sign in</h2>
-        <form action="/login" method="POST">
+        <form action="/sign_in" method="POST">
             <input type="text" name="user" placeholder="User" required>
             <input type="password" name="password" placeholder="password" required>
             <button type="submit">login</button>
         </form>
         <div class="footer">
-            <p>Don't have an account yet? <a href="#">Log up</a></p>
+            <p>Don't have an account yet? <a href="/logup">Log up</a></p>
         </div>
     </div>
 </body>
+
+</html>

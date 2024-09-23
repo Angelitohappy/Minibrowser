@@ -1,54 +1,122 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>result table</title>
-    <link rel="stylesheet" href="/css/results_table.css">
-</head>
-
 <body>
-
     <header>
-        <h1>Título de la Página</h1>
+        <nav>
+            <ul class="nav-right-section">
+                <li>
+                    <a href="https://www.google.com/intl/es-419/gmail/about/">Gmail</a>
+                </li>
+                <li>
+                    <a href="https://www.google.co.ve/imghp?hl=en&ogbl">Images</a>
+                </li>
+                <li class="menu-icon">
+                    <a href="">
+                        <i class="bi bi-grid-3x3-gap-fill"></i>
+                    </a>
+                </li>
+                <li>
+                    <span class="user-initial">{{userInitial}}</span> <!-- Reemplaza 'A' con la inicial del usuario -->
+                </li>
+                <li>
+                    <button id="logout-button">Log out</button>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <main>
-        <h2>Encabezado del Contenido</h2>
-        <p>
-            Este es un párrafo de texto en la página. Puedes agregar cualquier contenido que desees aquí.
-            Asegúrate de que sea relevante y útil para tus visitantes.
-        </p>
-        <p>
-            Puedes incluir más párrafos, imágenes o cualquier otro elemento HTML que necesites para
-            enriquecer tu contenido.
-        </p>
-
-        <!-- Zona para el JSON -->
-        <div id="data">
-            <script>
-                const jsonData = {
-                    // Aquí puedes insertar los datos de la base de datos en formato JSON
-                    "pagina1": {
-                        "titulo": "Título de la Página 1",
-                        "contenido": "Contenido de la Página 1"
-                    },
-                    "pagina2": {
-                        "titulo": "Título de la Página 2",
-                        "contenido": "Contenido de la Página 2"
-                    }
-                    // Agrega más páginas según sea necesario
-                };
-                console.log(jsonData); // Muestra los datos en la consola para verificar
-            </script>
-        </div>
+        <section class="main-logo">
+            <img src="/img/Google_2015_logo.svg" alt="Google">
+        </section>
+        <section class="main-input">
+            <div class="main-input-container">
+                <span class="search-icon">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" id="search-input" placeholder="Buscar...">
+                <button id="search-button" class="invisible">Buscar</button> <!-- Clase para hacerlo invisible -->
+            </div>
+        </section>
+        <section class="main-buttons">
+            <div>
+                <button>Search with Google</button>
+            </div>
+            <div>
+                <button>I feel lucky</button>
+            </div>
+        </section>
+        <section class="main-region">
+            <div>
+                <p>Offered by Google in:
+                    <span>
+                        <a href="">Spanish (Latin America)</a>
+                    </span>
+                </p>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Mi Página de Texto. Todos los derechos reservados.</p>
+        <ul class="footer-left">
+            <li>
+                <a href="https://about.google/?fg=1">About Google</a>
+            </li>
+            <li>
+                <a href="https://ads.google.com/intl/es-419/home/">advertising</a>
+            </li>
+            <li>
+                <a
+                    href="https://smallbusiness.withgoogle.com/intl/es-419/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&gmbsrc=ww-ww-et-gs-z-gmb-s-z-u~sb-g4sb_srvcs-u&c=VE#!/">Business</a>
+            </li>
+            <li>
+                <a href="https://www.google.com/search/howsearchworks/?fg=1">How Search Work</a>
+            </li>
+        </ul>
+        <ul class="footer-right">
+            <li>
+                <a href="https://policies.google.com/privacy?hl=en-VE&fg=1">Privacy</a>
+            </li>
+            <li>
+                <a href="https://policies.google.com/terms?hl=en-VE&fg=1">Terms</a>
+            </li>
+            <li>
+                <a href="">Settings</a>
+            </li>
+        </ul>
     </footer>
 
-</body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Evento para buscar al presionar "Enter"
+            document.getElementById('search-input').addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
 
-</html>
+            // Evento para buscar al hacer clic en el botón
+            document.getElementById('search-button').addEventListener('click', function () {
+                performSearch();
+            });
+
+            // Evento para cerrar sesión
+            document.getElementById('logout-button').addEventListener('click', function () {
+                window.location.href = '/logout'; // Cambia '/logout' a la ruta que maneja el cierre de sesión en tu servidor
+            });
+
+            function performSearch() {
+                const query = document.getElementById('search-input').value;
+                if (query) {
+                    // Redirige a la plantilla de resultados con la consulta
+                    window.location.href = `/results2?query=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .invisible {
+            display: none;
+            /* Oculta el botón */
+        }
+    </style>
+</body>

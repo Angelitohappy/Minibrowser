@@ -1,16 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/log_up.css">
+</head>
+
 <body>
     <div class="container">
         <h2>Create account</h2>
-        <form>
-            <input type="text" placeholder="First Name" required>
-            <input type="text" placeholder="Last Name" required>
-            <input type="email" placeholder="Mail Address" required>
-            <input type="password" placeholder="Password" required>
-            <input type="password" placeholder="Re-enter Password" required>
-            <button type="submit">create</button>
+        <form action="/register" method="POST">
+            <input type="text" name="fullName" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Mail Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirmPassword" placeholder="Re-enter Password" required>
+            <button type="submit">Create</button>
         </form>
         <div class="footer">
-            <p>Do you have account already? <a href="#">login</a></p>
+            <p>Do you have account already? <a href="/login">login</a></p>
         </div>
     </div>
+    </div>
+
 </body>
+
+</html>

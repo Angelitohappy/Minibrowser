@@ -22,6 +22,10 @@ header nav {
     justify-content: flex-end;
 }
 
+#logout-button {
+    margin-left: 4px;
+}
+
 header nav .nav-right-section {
     width: 300px;
     height: auto;

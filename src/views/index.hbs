@@ -14,7 +14,7 @@
                     </a>
                 </li>
                 <li>
-                    <form action="/log_in">
+                    <form action="/login">
                         <input type="submit" value="sign in">
                     </form>
                 </li>
@@ -31,7 +31,8 @@
                 <span class="search-icon">
                     <i class="bi bi-search"></i>
                 </span>
-                <input type="text">
+                <input type="text" id="search-input" placeholder="Buscar...">
+                <button id="search-button" class="invisible">Buscar</button> <!-- Clase para hacerlo invisible -->
             </div>
         </section>
         <section class="main-buttons">
@@ -81,4 +82,34 @@
             </li>
         </ul>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Evento para buscar al presionar "Enter"
+            document.getElementById('search-input').addEventListener('keypress', function (event) {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // Evento para buscar al hacer clic en el botón
+            document.getElementById('search-button').addEventListener('click', function () {
+                performSearch();
+            });
+
+            function performSearch() {
+                const query = document.getElementById('search-input').value;
+                if (query) {
+                    // Redirige a la plantilla de resultados con la consulta
+                    window.location.href = `/results?query=${encodeURIComponent(query)}`;
+                }
+            }
+        });
+    </script>
+    <style>
+        .invisible {
+            display: none;
+            /* Oculta el botón */
+        }
+    </style>
 </body>
